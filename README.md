@@ -3,6 +3,7 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->This starter code is just some simple faces being drawn. 
+Started to make use of the ellipses to make the face look like a log - if I cant do squiggly lines, I can try give the face inspiration of a chopped log with lots of lines, layers and depth with the layered circles. I have made a base face with a slider for each eye and mouth.
+
 
 

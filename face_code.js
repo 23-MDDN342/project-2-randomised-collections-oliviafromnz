@@ -13,6 +13,39 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
+
+function MYFACE(mouth_value, seceye_value, firsteye_value){
+  const bg_color3 = [71, 222, 219];
+  let headSize = 20
+  let eyeSize = 5;
+  let centerX = 0;
+  let Iy = -4
+  let distactBetweenEyes = 5
+  let MouthDrop = 7
+  
+  ellipse(0,0,15,20); //base
+  strokeWeight(0.1)
+  ellipse(0,0,14,19); //base
+  strokeWeight(0.05)
+  ellipse(0,0,13.5,18.5); //base
+
+
+  noFill();
+  strokeWeight(0.2)
+  ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
+
+  ellipse(centerX-4, Iy-6 + MouthDrop, distactBetweenEyes-2, seceye_value);
+  strokeWeight(0.05)
+  ellipse(centerX-4, Iy-6 + MouthDrop, distactBetweenEyes-4, seceye_value-1);
+  strokeWeight(0.02)
+  ellipse(centerX-4, Iy-6 + MouthDrop, distactBetweenEyes-3, seceye_value-1.1);
+
+  strokeWeight(0.2)
+  ellipse(centerX+4, Iy-6 + MouthDrop, distactBetweenEyes-2, firsteye_value);
+  strokeWeight(0.05)
+  ellipse(centerX+4, Iy-6 + MouthDrop, distactBetweenEyes-4, firsteye_value-1);
+}
+
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
   const bg_color3 = [71, 222, 219];
   const fg_color3 = [255, 93, 35];
