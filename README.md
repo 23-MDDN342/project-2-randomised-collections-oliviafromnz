@@ -3,7 +3,11 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
-Started to make use of the ellipses to make the face look like a log - if I cant do squiggly lines, I can try give the face inspiration of a chopped log with lots of lines, layers and depth with the layered circles. I have made a base face with a slider for each eye and mouth.
+With the starting code Phoebe sent me to form a squiggly circle. I started to create functions for each eye, mouth and more organic growth lines in the tree trunk. Due to the squiggliness (amount of points) needed to hide the linear point at the end of the custom shape, I have changed my view and opted for more of an areal view of a tree trunk chopped. Each showing a different formed face. 
+
+My next step is to sort out the arrangement. 
+
+
 
 
 
