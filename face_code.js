@@ -16,93 +16,79 @@
 
 // Phoebes base code ***
 
-function TREELINES(treelines_value){
-  let centerX = 0;
 
-  if (treelines_value === 1 || treelines_value == 3) {
-    // fill(bg_color3);
-    // ellipse(centerX, Iy, eyeSize-1,eyeSize);
-    strokeWeight(1);
-    line (centerX, centerX+10, centerX, centerX+30);
-  }
-
-}
-function FACEBASE_DETAIL (facedetail_value){
+function MYLOGFACE (righteye_value, lefteye_value, mouthh_value, facedetail_value, treerootscale){
   let lower_val = 0;
   let higher_val = 5;
-  push();
-  angleMode(DEGREES);
-  strokeWeight(0.1);
   let x, y;
-  let points = 40;
 
-  // first shape
-  beginShape();
-  noFill();
-  for (let i = 0; i < points; i++) {
-    let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-    let r = 10 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
-    curveVertex(x, y);
-  }
-  endShape(CLOSE);
+  scale(0.6);
+    ///////// tree root 1
+    push()
+    translate(0, 0.5)
+    beginShape();
+    strokeWeight(0.2)
+    scale(treerootscale)
+    vertex(3, 1);
+    bezierVertex(5, -5, 1, -4.5, 1, -8);
+    bezierVertex(1, -10, 0, -11, 0, -10);
+    bezierVertex(0, -10, 1, -5, -2.3, -6);
+    bezierVertex(-3, -6, -12, -9, -7, -3.5);
+    bezierVertex(-4, 2, -10, 1, -2, 4);
+    endShape();
+  
+    beginShape();
+    strokeWeight(0.1)
+    noFill();
+    scale(treerootscale*0.5)
+    vertex(3, 1);
+    bezierVertex(5, -5, 1, -4.5, 1, -8);
+    bezierVertex(1, -10, 0, -11, 0, -10);
+    bezierVertex(0, -10, 1, -5, -2.3, -6);
+    bezierVertex(-3, -6, -12, -9, -7, -3.5);
+    bezierVertex(-4, 2, -10, 1, -2, 4);
+    endShape();
+    pop()
 
-  beginShape();
-  noFill();
-  for (let i = 0; i < points; i++) {
-    let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-    let r = 9.5 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
-    curveVertex(x, y);
-  }
-  endShape(CLOSE);
-  pop();
-}
 
-function FACE_BASE(facedetail_value) {
-  let lower_val = 0;
-  let higher_val = 5;
-  push();
-  angleMode(DEGREES);
-  noFill();
-  strokeWeight(0.3);
-  let x, y;
-  let points = 40;
-
-  // first shape
-  beginShape();
-  for (let i = 0; i < points; i++) {
-    let n = map(noise(i), lower_val, higher_val, -1, facedetail_value);
-    let r = 9 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
-    curveVertex(x, y);
-  }
-  endShape(CLOSE);
-  pop();
-}
-
-function RIGHTEYE(righteye_value){
-  let lower_val = 0;
-  let higher_val = 5;
+    //////////////// FACE BASE CIRC ////////////
+    push();
+    angleMode(DEGREES);
+    fill(255,255,255);
+    strokeWeight(0.3);
+    let points2 = 40;
+    stroke(51);
+  
+    // first shape
+    beginShape();
+    fill(255,255,255);
+    for (let i = 0; i < points2; i++) {
+      let n = map(noise(i), lower_val, higher_val, -1, facedetail_value);
+      let r = 9 + n;
+      x = r * cos(i * (360 / points2));
+      y = r * sin(i * (360 / points2));
+      curveVertex(x, y);
+    }
+    endShape(CLOSE);
+    pop();
+    
+  ////////////// RIGHT EYE ///////////////////
   push();
   angleMode(DEGREES);
   noFill();
   strokeWeight(0.3);
-  let x, y;
-  let points = 8;
+  stroke(51);
+  let points3 = 8;
 
   // first shape
   beginShape();
   fill(255,255,255);
   strokeWeight(0.1);
-  for (let i = 0; i < points; i++) {
+  for (let i = 0; i < points3; i++) {
     let n = map(noise(i), lower_val+0.5, higher_val, -2, righteye_value);
     let r = 3 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
+    x = r * cos(i * (360 / points3));
+    y = r * sin(i * (360 / points3));
     curveVertex(x+3, y-3);
   }
   endShape(CLOSE);
@@ -110,37 +96,34 @@ function RIGHTEYE(righteye_value){
   beginShape();
   fill(255,255,255);
   strokeWeight(0.08);
-  for (let i = 0; i < points; i++) {
+  for (let i = 0; i < points3; i++) {
     let n = map(noise(i), lower_val+0.5, higher_val, -2, righteye_value);
     let r = 2.5 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
+    x = r * cos(i * (360 / points3));
+    y = r * sin(i * (360 / points3));
     curveVertex(x+3, y-3);
   }
   endShape(CLOSE);
 
   pop();
-}
 
-function LEFTEYE(lefteye_value){
-  let lower_val = 0;
-  let higher_val = 5;
+  //////////// LEFT EYE ///////////////
   push();
   angleMode(DEGREES);
-  noFill();
   strokeWeight(0.3);
-  let x, y;
-  let points = 10;
+  stroke(51);
+
+  let points4 = 10;
 
   // first shape
   beginShape();
   fill(255,255,255);
   strokeWeight(0.1);
-  for (let i = 0; i < points; i++) {
+  for (let i = 0; i < points4; i++) {
     let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
     let r = 1 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
+    x = r * cos(i * (360 / points4));
+    y = r * sin(i * (360 / points4));
     curveVertex(x-3, y-2);
   }
   endShape(CLOSE);
@@ -148,38 +131,50 @@ function LEFTEYE(lefteye_value){
   beginShape();
   fill(255,255,255);
   strokeWeight(0.08);
-  for (let i = 0; i < points; i++) {
+  for (let i = 0; i < points4; i++) {
     let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
     let r = 1.5 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
+    x = r * cos(i * (360 / points4));
+    y = r * sin(i * (360 / points4));
     curveVertex(x-3, y-2);
   }
   endShape(CLOSE);
 
   pop();
-}
 
+  push();
+  beginShape();
+  fill(255,255,255);
+  strokeWeight(0.03);
+  for (let i = 0; i < points4; i++) {
+    let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
+    let r = 2 + n;
+    x = r * cos(i * (360 / points4));
+    y = r * sin(i * (360 / points4));
+    curveVertex(x-3, y-2);
+  }
+  endShape(CLOSE);
 
-function MOUTHMOVING(mouthh_value) {
-  let lower_val = 0;
-  let higher_val = 5;
+  pop();
+
+  ///////////////// MOUTH MOVING /////////////
   push();
   angleMode(DEGREES);
-  noFill();
+  fill(255,255,255);
   strokeWeight(0.3);
-  let x, y;
-  let points = 16;
+  stroke(51);
+
+  let points5 = 16;
 
   // first shape
   beginShape();
   fill(255,255,255);
   strokeWeight(0.2);
-  for (let i = 0; i < points; i++) {
+  for (let i = 0; i < points5; i++) {
     let n = map(noise(i), lower_val, higher_val-1, -2, mouthh_value);
     let r = 3 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
+    x = r * cos(i * (360 / points5));
+    y = r * sin(i * (360 / points5));
     curveVertex(x, y+3);
   }
   endShape(CLOSE);
@@ -187,17 +182,368 @@ function MOUTHMOVING(mouthh_value) {
   beginShape();
   fill(255,255,255);
   strokeWeight(0.1);
-  for (let i = 0; i < points; i++) {
+  for (let i = 0; i < points5; i++) {
     let n = map(noise(i), lower_val, higher_val-1, -2, mouthh_value);
     let r = 2.5 + n;
-    x = r * cos(i * (360 / points));
-    y = r * sin(i * (360 / points));
+    x = r * cos(i * (360 / points5));
+    y = r * sin(i * (360 / points5));
     curveVertex(x, y+3);
   }
   endShape(CLOSE);
 
   pop();
+
+
+   ///// FACE DETAIL /////
+
+   push();
+   angleMode(DEGREES);
+   strokeWeight(0.1);
+   stroke(51);
+   let points = 40;
+   //fill(255,255,255);
+ 
+    //inner circle
+    push()
+    beginShape();
+    strokeWeight(0.008);
+    noFill();
+    for (let i = 0; i < points; i++) {
+      let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+      let r = 7 + n;
+      x = r * cos(i * (360 / points));
+      y = r * sin(i * (360 / points));
+      curveVertex(x, y);
+    }
+    endShape(CLOSE);
+    pop();
+
+       // fifth line
+   push()
+   beginShape();
+   strokeWeight(0.02);
+   noFill();
+   for (let i = 0; i < points; i++) {
+     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+     let r = 8 + n;
+     x = r * cos(i * (360 / points));
+     y = r * sin(i * (360 / points));
+     curveVertex(x, y);
+   }
+   endShape(CLOSE);
+   pop();
+
+      // fourth line
+      push()
+      beginShape();
+      strokeWeight(0.06);
+      noFill();
+      for (let i = 0; i < points; i++) {
+        let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+        let r = 8.5 + n;
+        x = r * cos(i * (360 / points));
+        y = r * sin(i * (360 / points));
+        curveVertex(x, y);
+      }
+      endShape(CLOSE);
+      pop();
+
+         // third line
+   push()
+   beginShape();
+   noFill();
+   strokeWeight(0.02);
+   for (let i = 0; i < points; i++) {
+     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+     let r = 9 + n;
+     x = r * cos(i * (360 / points));
+     y = r * sin(i * (360 / points));
+     curveVertex(x, y);
+   }
+   endShape(CLOSE);
+   pop();
+
+    //second shape
+    beginShape();
+    noFill();
+    for (let i = 0; i < points; i++) {
+      let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+      let r = 9.5 + n;
+      x = r * cos(i * (360 / points));
+      y = r * sin(i * (360 / points));
+      curveVertex(x, y);
+    }
+    endShape(CLOSE);
+    pop();
+
+   //first shape
+   beginShape();
+   noFill(255,255,255);
+   strokeWeight(0.1)
+   stroke(51);
+   for (let i = 0; i < points; i++) {
+     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+     let r = 10 + n;
+     x = r * cos(i * (360 / points));
+     y = r * sin(i * (360 / points));
+     curveVertex(x, y);
+   }
+   endShape(CLOSE);
+
+
 }
+
+
+// function TREELINES(treelines_value){
+//   let centerX = 0;
+// }
+
+// function FACEBASE_DETAIL (facedetail_value){
+//   let lower_val = 0;
+//   let higher_val = 5;
+//   push();
+//   angleMode(DEGREES);
+//   strokeWeight(0.1);
+//   let x, y;
+//   let points = 40;
+
+//   //first shape
+//   beginShape();
+//   noFill();
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+//     let r = 10 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+// //second shape
+//   beginShape();
+//   noFill();
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+//     let r = 9.5 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+//   pop();
+
+//   push()
+//   beginShape();
+//   noFill();
+//   strokeWeight(0.02);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+//     let r = 9 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+//   pop();
+
+//   push()
+//   beginShape();
+//   strokeWeight(0.06);
+//   noFill();
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+//     let r = 8.5 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+//   pop();
+
+//   push()
+//   beginShape();
+//   strokeWeight(0.02);
+//   noFill();
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+//     let r = 8 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+//   pop();
+// //inner circle
+//   push()
+//   beginShape();
+//   strokeWeight(0.008);
+//   noFill();
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+//     let r = 7 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+//   pop();
+
+// }
+
+// function FACE_BASE(facedetail_value) {
+//   let lower_val = 0;
+//   let higher_val = 5;
+//   push();
+//   angleMode(DEGREES);
+//   noFill();
+//   strokeWeight(0.3);
+//   let x, y;
+//   let points = 40;
+
+//   // first shape
+//   beginShape();
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val, higher_val, -1, facedetail_value);
+//     let r = 9 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y);
+//   }
+//   endShape(CLOSE);
+//   pop();
+// }
+
+// function RIGHTEYE(righteye_value){
+//   let lower_val = 0;
+//   let higher_val = 5;
+//   push();
+//   angleMode(DEGREES);
+//   noFill();
+//   strokeWeight(0.3);
+//   let x, y;
+//   let points = 8;
+
+//   // first shape
+//   beginShape();
+//   fill(255,255,255);
+//   strokeWeight(0.1);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+0.5, higher_val, -2, righteye_value);
+//     let r = 3 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x+3, y-3);
+//   }
+//   endShape(CLOSE);
+
+//   beginShape();
+//   fill(255,255,255);
+//   strokeWeight(0.08);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+0.5, higher_val, -2, righteye_value);
+//     let r = 2.5 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x+3, y-3);
+//   }
+//   endShape(CLOSE);
+
+//   pop();
+
+// }
+
+// function LEFTEYE(lefteye_value){
+//   let lower_val = 0;
+//   let higher_val = 5;
+//   push();
+//   angleMode(DEGREES);
+//   noFill();
+//   strokeWeight(0.3);
+//   let x, y;
+//   let points = 10;
+
+//   // first shape
+//   beginShape();
+//   fill(255,255,255);
+//   strokeWeight(0.1);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
+//     let r = 1 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x-3, y-2);
+//   }
+//   endShape(CLOSE);
+
+//   beginShape();
+//   fill(255,255,255);
+//   strokeWeight(0.08);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
+//     let r = 1.5 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x-3, y-2);
+//   }
+//   endShape(CLOSE);
+
+//   pop();
+
+//   push();
+//   beginShape();
+//   noFill();
+//   strokeWeight(0.03);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
+//     let r = 2 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x-3, y-2);
+//   }
+//   endShape(CLOSE);
+
+//   pop();
+
+  
+// }
+
+
+// function MOUTHMOVING(mouthh_value) {
+//   let lower_val = 0;
+//   let higher_val = 5;
+//   push();
+//   angleMode(DEGREES);
+//   noFill();
+//   strokeWeight(0.3);
+//   let x, y;
+//   let points = 16;
+
+//   // first shape
+//   beginShape();
+//   fill(255,255,255);
+//   strokeWeight(0.2);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val, higher_val-1, -2, mouthh_value);
+//     let r = 3 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y+3);
+//   }
+//   endShape(CLOSE);
+
+//   beginShape();
+//   fill(255,255,255);
+//   strokeWeight(0.1);
+//   for (let i = 0; i < points; i++) {
+//     let n = map(noise(i), lower_val, higher_val-1, -2, mouthh_value);
+//     let r = 2.5 + n;
+//     x = r * cos(i * (360 / points));
+//     y = r * sin(i * (360 / points));
+//     curveVertex(x, y+3);
+//   }
+//   endShape(CLOSE);
+
+//   pop();
+// }
 
 
 

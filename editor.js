@@ -10,6 +10,8 @@ let slider6, slider7, slider8, slider9, slider10;
 let faceSelector;
 let faceGuideCheckbox;
 
+let middleX = 480;
+let middleY = 350
 function setup () {
 
   // create the drawing canvas, save the canvas element
@@ -86,7 +88,7 @@ function draw () {
   push();
   if (mode == '1') {
    // draw face using values mapped from 3 sliders
-   let tilt_value = map(s1, 0, 100, -90, 90);
+   //let tilt_value = map(s1, 0, 100, -90, 90);
    //let mouth_value = map(s2, 0, 100, 0.5, 10);
    //let eye_value = int(map(s3, 0, 100, 1, 3));
    //orangeAlienFace(tilt_value, eye_value, mouth_value);
@@ -101,24 +103,13 @@ function draw () {
   }
 
   if (mode == '4') {
+    let facedetail_value =map(s1, 0, 100, 0.5, 7);
     let mouthh_value = map(s2, 0, 100, 0.5, 5);
-      //let seceye_value = map(s3, 0, 100, 0.5, 10);
-      //let firsteye_value = map(s4, 0, 100, 0.5, 10);
-      let facebase_value = map(s1, 0, 100, 0.5, 8);
-      let facedetail_value =map(s1, 0, 100, 0.5, 7);
       let lefteye_value = map(s3, 0, 100, 0, 3);
       let righteye_value = map(s4, 0, 100, 0, 5);
-      let treelines_value = int(map(s6, 0, 100, 1, 3));
+      let treerootscale = map(s5, 0, 100, 0.9, 1.6);
 
-    //let righteye_value = map(s4, 0, 100, 0.5, 10);
-
-    //MYFACE(seceye_value, firsteye_value);
-    FACE_BASE(facebase_value);
-    FACEBASE_DETAIL(facedetail_value);
-    MOUTHMOVING (mouthh_value);
-    LEFTEYE (lefteye_value);
-    RIGHTEYE (righteye_value);
-    TREELINES (treelines_value);
+    MYLOGFACE(treerootscale, facedetail_value, mouthh_value, lefteye_value, righteye_value)
   }
 
   pop();

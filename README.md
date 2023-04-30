@@ -3,9 +3,11 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
-With the starting code Phoebe sent me to form a squiggly circle. I started to create functions for each eye, mouth and more organic growth lines in the tree trunk. Due to the squiggliness (amount of points) needed to hide the linear point at the end of the custom shape, I have changed my view and opted for more of an areal view of a tree trunk chopped. Each showing a different formed face. 
+Struggling with making the tree root lines appear in the arrangement. Have been going a bit back and forth with scale. Think I have a good arrangement - now just need to fix roots. I will make another root to make the tree even on both sides and then add extras like grass and an axe potentially. 
 
-My next step is to sort out the arrangement. 
+The root lines are differing in size between editor and arrangement view - need to ammend. 
+
+
 
 
 
