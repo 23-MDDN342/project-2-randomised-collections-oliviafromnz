@@ -17,60 +17,162 @@
 // Phoebes base code ***
 
 
-function MYLOGFACE (righteye_value, lefteye_value, mouthh_value, facedetail_value, treerootscale){
+function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value, treerootscale){
   let lower_val = 0;
   let higher_val = 5;
   let x, y;
 
+  push();
+  beginShape();
+  strokeWeight(0.1)
+  fill(255,255,255);
+  scale(treerootscale);
+  vertex(3, 1);
+  bezierVertex(5, -5, 1, -4.5, 1, -8);
+  bezierVertex(1, -10, 0, -11, 0, -10);
+  bezierVertex(0, -10, 1, -5, -2.3, -6);
+  bezierVertex(-3, -6, -12, -9, -7, -3.5);
+  bezierVertex(-4, 2, -10, 1, -2, 4);
+  endShape();
+  pop()
+
+
+  push();
+  beginShape();
+  strokeWeight(0.1)
+  fill(255,255,255);
+  rotate(PI / 0.02);
+  scale(treerootscale*0.7);
+  vertex(3, 1);
+  bezierVertex(5, -5, 1, -4.5, 1, -8);
+  bezierVertex(1, -10, 0, -11, 0, -10);
+  bezierVertex(0, -10, 1, -5, -2.3, -6);
+  bezierVertex(-3, -6, -12, -9, -7, -3.5);
+  bezierVertex(-4, 2, -10, 1, -2, 4);
+  endShape();
+  pop()
+
+
   scale(0.6);
-    ///////// tree root 1
-    push()
-    translate(0, 0.5)
-    beginShape();
-    strokeWeight(0.2)
-    scale(treerootscale)
-    vertex(3, 1);
-    bezierVertex(5, -5, 1, -4.5, 1, -8);
-    bezierVertex(1, -10, 0, -11, 0, -10);
-    bezierVertex(0, -10, 1, -5, -2.3, -6);
-    bezierVertex(-3, -6, -12, -9, -7, -3.5);
-    bezierVertex(-4, 2, -10, 1, -2, 4);
-    endShape();
-  
-    beginShape();
-    strokeWeight(0.1)
-    noFill();
-    scale(treerootscale*0.5)
-    vertex(3, 1);
-    bezierVertex(5, -5, 1, -4.5, 1, -8);
-    bezierVertex(1, -10, 0, -11, 0, -10);
-    bezierVertex(0, -10, 1, -5, -2.3, -6);
-    bezierVertex(-3, -6, -12, -9, -7, -3.5);
-    bezierVertex(-4, 2, -10, 1, -2, 4);
-    endShape();
-    pop()
+
+   //////////////// FACE BASE CIRC ////////////
+   push();
+   angleMode(DEGREES);
+   fill(255,255,255);
+   strokeWeight(0.3);
+   let points2 = 40;
+   stroke(51);
+ 
+   // first shape
+   beginShape();
+   fill(255,255,255);
+   for (let i = 0; i < points2; i++) {
+     let n = map(noise(i), lower_val, higher_val, -1, facedetail_value);
+     let r = 9 + n;
+     x = r * cos(i * (360 / points2));
+     y = r * sin(i * (360 / points2));
+     curveVertex(x, y);
+   }
+   endShape(CLOSE);
+   pop();
+
+  ///// FACE DETAIL /////
+
+  push();
+  angleMode(DEGREES);
+  strokeWeight(0.1);
+  stroke(51);
+  let points = 40;
+  //fill(255,255,255);
 
 
-    //////////////// FACE BASE CIRC ////////////
-    push();
-    angleMode(DEGREES);
-    fill(255,255,255);
-    strokeWeight(0.3);
-    let points2 = 40;
-    stroke(51);
-  
-    // first shape
-    beginShape();
-    fill(255,255,255);
-    for (let i = 0; i < points2; i++) {
-      let n = map(noise(i), lower_val, higher_val, -1, facedetail_value);
-      let r = 9 + n;
-      x = r * cos(i * (360 / points2));
-      y = r * sin(i * (360 / points2));
-      curveVertex(x, y);
-    }
-    endShape(CLOSE);
-    pop();
+     //first shape
+     beginShape();
+     fill(255,255,255);
+     strokeWeight(0.1)
+     stroke(51);
+     for (let i = 0; i < points; i++) {
+       let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+       let r = 10 + n;
+       x = r * cos(i * (360 / points));
+       y = r * sin(i * (360 / points));
+       curveVertex(x, y);
+     }
+     endShape(CLOSE);
+
+     
+   //inner circle
+   push()
+   beginShape();
+   strokeWeight(0.008);
+   noFill();
+   for (let i = 0; i < points; i++) {
+     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+     let r = 7 + n;
+     x = r * cos(i * (360 / points));
+     y = r * sin(i * (360 / points));
+     curveVertex(x, y);
+   }
+   endShape(CLOSE);
+   pop();
+
+      // fifth line
+  push()
+  beginShape();
+  strokeWeight(0.02);
+  noFill();
+  for (let i = 0; i < points; i++) {
+    let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+    let r = 8 + n;
+    x = r * cos(i * (360 / points));
+    y = r * sin(i * (360 / points));
+    curveVertex(x, y);
+  }
+  endShape(CLOSE);
+  pop();
+
+     // fourth line
+     push()
+     beginShape();
+     strokeWeight(0.06);
+     noFill();
+     for (let i = 0; i < points; i++) {
+       let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+       let r = 8.5 + n;
+       x = r * cos(i * (360 / points));
+       y = r * sin(i * (360 / points));
+       curveVertex(x, y);
+     }
+     endShape(CLOSE);
+     pop();
+
+        // third line
+  push()
+  beginShape();
+  noFill();
+  strokeWeight(0.02);
+  for (let i = 0; i < points; i++) {
+    let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+    let r = 9 + n;
+    x = r * cos(i * (360 / points));
+    y = r * sin(i * (360 / points));
+    curveVertex(x, y);
+  }
+  endShape(CLOSE);
+  pop();
+
+   //second shape
+   beginShape();
+   noFill();
+   for (let i = 0; i < points; i++) {
+     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
+     let r = 9.5 + n;
+     x = r * cos(i * (360 / points));
+     y = r * sin(i * (360 / points));
+     curveVertex(x, y);
+   }
+   endShape(CLOSE);
+   pop();
     
   ////////////// RIGHT EYE ///////////////////
   push();
@@ -193,103 +295,7 @@ function MYLOGFACE (righteye_value, lefteye_value, mouthh_value, facedetail_valu
 
   pop();
 
-
-   ///// FACE DETAIL /////
-
-   push();
-   angleMode(DEGREES);
-   strokeWeight(0.1);
-   stroke(51);
-   let points = 40;
-   //fill(255,255,255);
- 
-    //inner circle
-    push()
-    beginShape();
-    strokeWeight(0.008);
-    noFill();
-    for (let i = 0; i < points; i++) {
-      let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-      let r = 7 + n;
-      x = r * cos(i * (360 / points));
-      y = r * sin(i * (360 / points));
-      curveVertex(x, y);
-    }
-    endShape(CLOSE);
-    pop();
-
-       // fifth line
-   push()
-   beginShape();
-   strokeWeight(0.02);
-   noFill();
-   for (let i = 0; i < points; i++) {
-     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-     let r = 8 + n;
-     x = r * cos(i * (360 / points));
-     y = r * sin(i * (360 / points));
-     curveVertex(x, y);
-   }
-   endShape(CLOSE);
-   pop();
-
-      // fourth line
-      push()
-      beginShape();
-      strokeWeight(0.06);
-      noFill();
-      for (let i = 0; i < points; i++) {
-        let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-        let r = 8.5 + n;
-        x = r * cos(i * (360 / points));
-        y = r * sin(i * (360 / points));
-        curveVertex(x, y);
-      }
-      endShape(CLOSE);
-      pop();
-
-         // third line
-   push()
-   beginShape();
-   noFill();
-   strokeWeight(0.02);
-   for (let i = 0; i < points; i++) {
-     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-     let r = 9 + n;
-     x = r * cos(i * (360 / points));
-     y = r * sin(i * (360 / points));
-     curveVertex(x, y);
-   }
-   endShape(CLOSE);
-   pop();
-
-    //second shape
-    beginShape();
-    noFill();
-    for (let i = 0; i < points; i++) {
-      let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-      let r = 9.5 + n;
-      x = r * cos(i * (360 / points));
-      y = r * sin(i * (360 / points));
-      curveVertex(x, y);
-    }
-    endShape(CLOSE);
-    pop();
-
-   //first shape
-   beginShape();
-   noFill(255,255,255);
-   strokeWeight(0.1)
-   stroke(51);
-   for (let i = 0; i < points; i++) {
-     let n = map(noise(i), lower_val+1, higher_val-2, -1, facedetail_value);
-     let r = 10 + n;
-     x = r * cos(i * (360 / points));
-     y = r * sin(i * (360 / points));
-     curveVertex(x, y);
-   }
-   endShape(CLOSE);
-
+  
 
 }
 
