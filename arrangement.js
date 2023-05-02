@@ -27,8 +27,6 @@ function changeRandomSeed() {
   lastSwapTime = millis();
 }
 
-
-
 function mouseClicked() {
   changeRandomSeed();
 }
@@ -44,55 +42,14 @@ function draw () {
   // reset the random number generator each time draw is called
   randomSeed(curRandomSeed);
 
-  ///// AXE ////
-
-// push()
-// scale(0.4);
-//   noFill();
-//   strokeWeight(0.2);
-//   stroke(0);
-
-  // beginShape();
-  // vertex(50, 200);
-  // vertex(100, 150);
-  // bezierVertex(120, 140, 130, 120, 150, 110);
-  // bezierVertex(200, 90, 240, 110, 290, 120);
-  // vertex(290, 140);
-  // vertex(180, 220);
-  // vertex(180, 280);
-  // vertex(250, 300);
-  // vertex(250, 350);
-  // vertex(180, 330);
-  // vertex(180, 450);
-  // vertex(160, 450);
-  // vertex(160, 330);
-  // vertex(90, 350);
-  // vertex(90, 300);
-  // vertex(160, 280);
-  // vertex(160, 220);
-  // endShape(CLOSE);
-  // // clear screen
-  // noStroke();
-  // pop()
-
-
   noFill();
   stroke(0);
-  strokeWeight(2);
+  strokeWeight(1);
   
   function drawAxe(){
+    rotate(-45);
   // Draw handle
   rect(50, 100, 100, 10);
-  
-  // Draw blade
-  beginShape();
-  vertex(150, 100);
-  bezierVertex(170, 80, 180, 90, 190, 80);
-  bezierVertex(200, 90, 190, 100, 200, 110);
-  bezierVertex(190, 120, 180, 110, 170, 120);
-  vertex(150, 100);
-  endShape();
-  
   // Connect handle to blade
   beginShape();
   vertex(150, 100);
@@ -100,14 +57,104 @@ function draw () {
   endShape();
   }
 
+  function drawBlade(){
+    push();
+    beginShape();
+    rotate(48)
+    strokeWeight(0.5);
+    vertex(150, 100);
+    bezierVertex(170, 80, 180, 90, 190, 80);
+    bezierVertex(200, 90, 190, 100, 200, 110);
+    bezierVertex(190, 120, 180, 110, 170, 120);
+    vertex(150, 100);
+    endShape();
+    pop();
+  }
+
   push();
-  translate(50, 40);
+  translate(190, -160);
+  scale(1)
+  drawBlade();
+  pop();
+
+  push();
+  translate(40, 80);
   scale(1)
   drawAxe();
   pop();
 
+function drawLog(){
 
-  function drawGrass() {
+  //base trunk
+  push();
+  rotate(-45);
+  strokeWeight(1);
+  stroke(0);
+  line(100, 200, 300, 200);
+  line(100, 250, 300, 250);
+
+  //end of trunk
+  ellipse(300, 225, 5, 50);
+  strokeWeight(0.3);
+  ellipse(300, 225, 2, 45);
+
+  //trunk detail
+  strokeWeight(0.5);
+  ellipse(220, 225, 43, 15);
+  strokeWeight(0.3);
+  ellipse(220, 226, 40, 10);
+  strokeWeight(0.2);
+  ellipse(220, 226, 38, 8);
+  strokeWeight(0.2);
+  ellipse(220, 226, 35, 3);
+
+  // trunk lines
+  strokeWeight(0.3);
+  scale(0.98);
+  line(100, 250, 300, 250);
+  line(100, 252, 303, 252);
+  line(80, 210, 200, 210);
+  line(240, 213, 300, 213);
+  pop();
+}
+
+
+function drawFlower(){
+
+ellipse (240, 225, 10,10);
+  beginShape();
+  vertex(240, 215);
+  bezierVertex(253, 205, 260, 223, 250, 225);
+  bezierVertex(260, 234, 250, 245, 239, 235);
+  bezierVertex(230, 247, 220, 230, 232, 226);
+  bezierVertex(220, 218, 230, 205, 240, 215);
+  endShape(CLOSE);
+
+}
+
+push();
+translate(20, 20);
+scale(0.5)
+drawFlower();
+pop();
+
+push();
+translate(40, 80);
+scale(0.5)
+drawFlower();
+pop();
+
+
+
+////// DRAW LOG //////
+push();
+  translate(0, 450);
+  scale(1.5)
+  drawLog();
+  pop();
+
+
+function drawGrass() {
     noFill();
     stroke(0);
     beginShape();
@@ -122,12 +169,23 @@ function draw () {
     curveVertex(30, 40);
     endShape();
   }
-  
-  // Call the function to draw the shape
+
+  strokeWeight(0.4);
+  // draw grass
+  push();
+  translate(400, 0);
+  scale(0.7)
+  drawGrass();
+  drawFlower();
+  pop();
 
   push();
   translate(50, 70);
   scale(0.8)
+  drawGrass();
+  drawFlower();
+
+  translate(200, 100); 
   drawGrass();
   pop();
 
@@ -135,24 +193,35 @@ function draw () {
   translate(300, 300);
   scale(0.5)
   drawGrass();
+  drawFlower();
+
+  translate(200, 100); 
+  drawGrass();
   pop();
 
   push();
-  translate(600, 200);
+  translate(600, 210); // mid Y right
   scale(0.5)
   drawGrass();
   pop();
 
   push();
-  translate(500, 100);
+  translate(500, 100); 
   scale(0.5)
+  drawFlower();
+  drawGrass();
+
+  translate(90, 100); 
   drawGrass();
   pop();
 
-  push();
-  translate(500, 400);
+  push(); // bottom right
+  translate(600, 400);
   scale(0.7)
   drawGrass();
+  translate(90, 100); 
+  drawGrass();
+  drawFlower();
   pop();
 
   // set stroke weight and color
@@ -199,6 +268,7 @@ function draw () {
         push();
         translate(width/2, height/2);
         scale(8);
+        rotate(45);
         strokeWeight(1);
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
         pop();
@@ -207,12 +277,14 @@ function draw () {
         translate(width/8, height/2);
         scale(10);
         strokeWeight(1);
+        rotate(-65);
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
         pop();
 
         push();
         translate(width/8*6, height/4);
         scale(9);
+        rotate(-35);
         strokeWeight(1);
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(),getTreeRootscale());
         pop();
@@ -220,6 +292,7 @@ function draw () {
         push();
         translate(width/8*3, height/3);
         scale(9);
+        rotate(15);
         strokeWeight(1);
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(),getTreeRootscale());
         pop();
@@ -249,7 +322,7 @@ function draw () {
     }
 
     function getrandomEyeLeft(){
-      return(random (0, 3))
+      return int(random(0, 3))
     }
 
     function getrandomMouthValue(){

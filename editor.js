@@ -85,34 +85,19 @@ function draw () {
   translate(face_x, face_y);
   scale(face_scale);
 
-  push();
-  if (mode == '1') {
-   // draw face using values mapped from 3 sliders
-   //let mouth_value = map(s2, 0, 100, 0.5, 10);
-   //let eye_value = int(map(s3, 0, 100, 1, 3));
-   //orangeAlienFace(tilt_value, eye_value, mouth_value);
-  }
-
-  if (mode == '2') {
-     // let slider value 1 indicate thinness
-     blockyFace(s1);
-  }
-  if (mode == '3') {
-    simplePurpleFace();
-  }
 
   if (mode == '4') {
     let facedetail_value =map(s1, 0, 100, 0.5, 7);
     let mouthh_value = map(s2, 0, 100, 0.5, 5);
-    let lefteye_value = map(s3, 0, 100, 0, 3);
-    let righteye_value = map(s4, 0, 100, 0, 5);
+    let lefteye_value = map(s3, 0, 100, 0, 8);
+    let righteye_value = int(map(s4, 0, 100, 0, 5));
     let treerootscale = map(s5, 0, 100, 0.7, 1);
 
     MYLOGFACE(facedetail_value, mouthh_value, righteye_value, lefteye_value,  treerootscale)
   }
 
   pop();
-
+push();
   if(show_face_guide) {
     strokeWeight(0.1);
     rectMode(CORNER); 

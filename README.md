@@ -3,7 +3,9 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
-Made the root lines appear and fixed scaling. Added roots on both sides. Added grass and an axe that needs to be roatted and adjusted. Brainsgtorming more ideas of elements to add in the scene. Shrubs?
+Have added an ax, grass and logs with detail. 
+
+Dont want to add colour experimented and ruined the whole instrinsic hand drawn look.
 
 
 
