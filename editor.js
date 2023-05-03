@@ -46,10 +46,10 @@ function setup () {
 
   faceSelector = createSelect();
   faceSelector.option('1');
-  faceSelector.option('2');
-  faceSelector.option('3');
-  faceSelector.option('4');
-  faceSelector.value('4');
+  //faceSelector.option('2');
+  //faceSelector.option('3');
+  //faceSelector.option('4');
+  faceSelector.value('1');
   faceSelector.parent('selector1Container');
 }
 
@@ -86,18 +86,18 @@ function draw () {
   scale(face_scale);
 
 
-  if (mode == '4') {
+  if (mode == '1') {
     let facedetail_value =map(s1, 0, 100, 0.5, 7);
     let mouthh_value = map(s2, 0, 100, 0, 5);
     let lefteye_value = map(s3, 0, 100, 0, 10);
     let righteye_value = int(map(s4, 0, 100, 0, 5));
-    let treerootscale = map(s5, 0, 100, 0.7, 1);
-
+    let treerootscale = map(s5, 0, 100, 0.7, 0.95);
+    push();
     MYLOGFACE(facedetail_value, mouthh_value, righteye_value, lefteye_value,  treerootscale)
+    pop();
   }
 
-  pop();
-push();
+
   if(show_face_guide) {
     strokeWeight(0.1);
     rectMode(CORNER); 
