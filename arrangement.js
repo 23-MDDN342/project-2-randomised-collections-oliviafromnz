@@ -50,6 +50,10 @@ function draw () {
     rotate(-45);
   // Draw handle
   rect(50, 100, 100, 10);
+
+  strokeWeight(0.3);
+  rect(50, 100, 100, 6); // detail on handle
+
   // Connect handle to blade
   beginShape();
   vertex(150, 100);
@@ -61,7 +65,7 @@ function draw () {
     push();
     beginShape();
     rotate(48)
-    strokeWeight(0.5);
+    strokeWeight(0.8);
     vertex(150, 100);
     bezierVertex(170, 80, 180, 90, 190, 80);
     bezierVertex(200, 90, 190, 100, 200, 110);
@@ -154,6 +158,16 @@ push();
   pop();
 
 
+push();
+translate(850, 900);
+rotate(-80);
+scale(1.8)
+drawLog();
+pop();
+
+
+
+
 function drawGrass() {
     noFill();
     stroke(0);
@@ -224,6 +238,30 @@ function drawGrass() {
   drawFlower();
   pop();
 
+  push(); // bottom right
+  translate(700, 200);
+  scale(0.7)
+  drawGrass();
+
+  translate(90, 100); 
+  drawGrass();
+  drawFlower();
+  pop();
+
+  push();
+  translate(30, 20);
+  scale(0.7)
+  drawGrass();
+  drawFlower();
+  pop(); // top left grass sections
+
+  push();
+  translate(30, 400);
+  scale(0.5)
+  drawGrass();
+  drawFlower();
+  pop(); // left bottom grass
+
   // set stroke weight and color
   // push()
   // strokeWeight(2);
@@ -269,6 +307,14 @@ function drawGrass() {
         translate(width/2, height/2);
         scale(8);
         rotate(45);
+        strokeWeight(1);
+        MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
+        pop();
+
+        push();
+        translate(width/10*9.4, height/8*1.5);
+        scale(10);
+        rotate(70);
         strokeWeight(1);
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
         pop();
@@ -322,11 +368,11 @@ function drawGrass() {
     }
 
     function getrandomEyeLeft(){
-      return int(random(0, 3))
+      return int(random(0, 10))
     }
 
     function getrandomMouthValue(){
-      return(random (0.5, 5))
+      return(random (0, 5))
     }
 
     function getTreeRootscale(){

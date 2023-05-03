@@ -24,6 +24,21 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
   endShape();
   pop()
 
+   // inner tree root left
+   push();
+   beginShape();
+   strokeWeight(0.05)
+   fill(255,255,255);
+   scale(treerootscale-0.2);
+   vertex(3, 1);
+   bezierVertex(5, -5, 1, -4.5, 1, -7);
+   bezierVertex(1, -9, 1, -6, 1, -9);
+   bezierVertex(0, -10, 1, -5, -2.3, -6);
+   bezierVertex(-3, -6, -12, -9, -7, -3.5);
+   bezierVertex(-4, 2, -10, 1, -2, 4);
+   endShape();
+   pop()
+
   // tree root right
   push();
   beginShape();
@@ -170,6 +185,19 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
   stroke(51);
   let points3 = 8;
 
+  // outer thin shape
+    beginShape();
+    fill(255,255,255);
+    strokeWeight(0.02); // small detail line weight
+    for (let i = 0; i < points3; i++) {
+      let n = map(noise(i), lower_val+0.5, higher_val, -2, righteye_value);
+      let r = 3.4 + n;
+      x = r * cos(i * (360 / points3));
+      y = r * sin(i * (360 / points3));
+      curveVertex(x+2, y-2.5);
+    }
+    endShape(CLOSE);
+  
   // first shape
   beginShape();
   fill(255,255,255);
@@ -179,7 +207,7 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
     let r = 3 + n;
     x = r * cos(i * (360 / points3));
     y = r * sin(i * (360 / points3));
-    curveVertex(x+3, y-3);
+    curveVertex(x+2, y-2.5);
   }
   endShape(CLOSE);
 
@@ -191,7 +219,7 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
     let r = 2.5 + n;
     x = r * cos(i * (360 / points3));
     y = r * sin(i * (360 / points3));
-    curveVertex(x+3, y-3);
+    curveVertex(x+2, y-2.5);
   }
   endShape(CLOSE);
 
@@ -208,13 +236,26 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
   // first shape
   beginShape();
   fill(255,255,255);
+  strokeWeight(0.02);
+  for (let i = 0; i < points4; i++) {
+    let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
+    let r = 3.5 + n;
+    x = r * cos(i * (360 / points4));
+    y = r * sin(i * (360 / points4));
+    curveVertex(x-1.5, y-1);
+  }
+  endShape(CLOSE);
+
+  // first shape
+  beginShape();
+  fill(255,255,255);
   strokeWeight(0.1);
   for (let i = 0; i < points4; i++) {
     let n = map(noise(i), lower_val+0.5, higher_val, -2, lefteye_value);
     let r = 1 + n;
     x = r * cos(i * (360 / points4));
     y = r * sin(i * (360 / points4));
-    curveVertex(x-3, y-2);
+    curveVertex(x-1.5, y-1);
   }
   endShape(CLOSE);
 
@@ -226,7 +267,7 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
     let r = 1.5 + n;
     x = r * cos(i * (360 / points4));
     y = r * sin(i * (360 / points4));
-    curveVertex(x-3, y-2);
+    curveVertex(x-1.5, y-1);
   }
   endShape(CLOSE);
 
@@ -241,7 +282,7 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
     let r = 2 + n;
     x = r * cos(i * (360 / points4));
     y = r * sin(i * (360 / points4));
-    curveVertex(x-3, y-2);
+    curveVertex(x-1.5, y-1);
   }
   endShape(CLOSE);
 
@@ -255,6 +296,19 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
   stroke(51);
 
   let points5 = 16;
+
+ // fouter thin detail
+ beginShape();
+ fill(255,255,255);
+ strokeWeight(0.02);
+ for (let i = 0; i < points5; i++) {
+   let n = map(noise(i), lower_val, higher_val-1, -2, mouthh_value);
+   let r = 3.2 + n;
+   x = r * cos(i * (360 / points5));
+   y = r * sin(i * (360 / points5));
+   curveVertex(x, y+3);
+ }
+ endShape(CLOSE);
 
   // first shape
   beginShape();
@@ -282,8 +336,6 @@ function MYLOGFACE (facedetail_value,righteye_value, lefteye_value, mouthh_value
   endShape(CLOSE);
 
   pop();
-
-  
 
 }
 
