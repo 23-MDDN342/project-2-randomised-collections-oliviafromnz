@@ -10,6 +10,8 @@ let slider6, slider7, slider8, slider9, slider10;
 let faceSelector;
 let faceGuideCheckbox;
 
+let middleX = 480;
+let middleY = 350
 function setup () {
 
   // create the drawing canvas, save the canvas element
@@ -44,8 +46,9 @@ function setup () {
 
   faceSelector = createSelect();
   faceSelector.option('1');
-  faceSelector.option('2');
-  faceSelector.option('3');
+  //faceSelector.option('2');
+  //faceSelector.option('3');
+  //faceSelector.option('4');
   faceSelector.value('1');
   faceSelector.parent('selector1Container');
 }
@@ -57,7 +60,7 @@ function draw () {
 
   let mode = faceSelector.value();
 
-  background(bg_color);
+  background(255, 255, 255 );
 
   let s1 = slider1.value();
   let s2 = slider2.value();
@@ -82,24 +85,18 @@ function draw () {
   translate(face_x, face_y);
   scale(face_scale);
 
-  push();
+
   if (mode == '1') {
-   // draw face using values mapped from 3 sliders
-   let tilt_value = map(s1, 0, 100, -90, 90);
-   let mouth_value = map(s2, 0, 100, 0.5, 10);
-   let eye_value = int(map(s3, 0, 100, 1, 3));
-   orangeAlienFace(tilt_value, eye_value, mouth_value);
+    let facedetail_value =map(s1, 0, 100, 0.5, 7);
+    let mouthh_value = map(s2, 0, 100, 0, 5);
+    let lefteye_value = map(s3, 0, 100, 0, 5);
+    let righteye_value = int(map(s4, 0, 100, 2, 10));
+    let treerootscale = map(s5, 0, 100, 0.7, 0.95);
+    push();
+    MYLOGFACE(facedetail_value, mouthh_value, righteye_value, lefteye_value,  treerootscale)
+    pop();
   }
 
-  if (mode == '2') {
-     // let slider value 1 indicate thinness
-     blockyFace(s1);
-  }
-  if (mode == '3') {
-    simplePurpleFace();
-  }
-
-  pop();
 
   if(show_face_guide) {
     strokeWeight(0.1);

@@ -65,7 +65,8 @@ function draw () {
         push();
         translate(x, y);
         scale(w/25, h/25);
-        orangeAlienFace(tilt_value, eye_value, mouth_value);
+        //orangeAlienFace(tilt_value, eye_value, mouth_value);
+        FACEBASE_DETAIL(facedetail_value);
         pop();
       }
       else if (i > 0) {
