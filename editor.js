@@ -89,8 +89,8 @@ function draw () {
   if (mode == '1') {
     let facedetail_value =map(s1, 0, 100, 0.5, 7);
     let mouthh_value = map(s2, 0, 100, 0, 5);
-    let lefteye_value = map(s3, 0, 100, 0, 10);
-    let righteye_value = int(map(s4, 0, 100, 0, 5));
+    let lefteye_value = map(s3, 0, 100, 0, 5);
+    let righteye_value = int(map(s4, 0, 100, 2, 10));
     let treerootscale = map(s5, 0, 100, 0.7, 0.95);
     push();
     MYLOGFACE(facedetail_value, mouthh_value, righteye_value, lefteye_value,  treerootscale)

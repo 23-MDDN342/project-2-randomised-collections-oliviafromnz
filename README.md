@@ -3,9 +3,21 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
-Have added an ax, grass and logs with detail. 
+PARAMETERS:
 
-Dont want to add colour experimented and ruined the whole instrinsic hand drawn look.
+SLIDER ONE: Face Frame - asjusts the tree logs outer frame and layer lines.
+
+SLIDER TWO: Right eye - adjusts the shape and changes the circ form
+
+SLIDER THREE: Mouth - adjusts the shape and changes the circ form
+
+SLIDER FOUR: Right eye - adjusts the shape and changes the circ form
+
+SLIDER FIVE: Roots - adjusts the size and how much the root is visible
+
+
+I was fascinated by the idea of curating unique faces that we may not typically encounter in our daily lives. The randomness of nature and what appeared in an untouched setting like a forest intrigued me. The Chernoff Faces had particularly inspired me with their wacky depictions of faces. I challenged myself by moving away from my usual style of color blocking and vector shapes and instead used black and white outlines. My ultimate goal was to create a hand-drawn forest animation that portrayed wacky and startled tree stumps sitting in a forrest after just being chopped. The scene is set in an ariel view. 
+
 
 
 

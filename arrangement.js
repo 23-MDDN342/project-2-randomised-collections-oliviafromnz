@@ -36,15 +36,15 @@ function draw () {
     changeRandomSeed();
   }
 
-
-//ellipse(100,100,200);
-
   // reset the random number generator each time draw is called
   randomSeed(curRandomSeed);
 
   noFill();
   stroke(0);
   strokeWeight(1);
+  
+
+  ///////////////// AXE /////////////
   
   function drawAxe(){
     rotate(-45);
@@ -60,7 +60,6 @@ function draw () {
   bezierVertex(140, 100, 140, 110, 150, 110);
   endShape();
   }
-
 
   function drawBlade(){
     push();
@@ -87,6 +86,9 @@ function draw () {
   scale(1)
   drawAxe();
   pop();
+
+
+/////////////// FALLEN LOGS /////////////
 
 function drawLog(){
 
@@ -124,33 +126,6 @@ function drawLog(){
 }
 
 
-function drawFlower(){
-
-ellipse (240, 225, 10,10);
-  beginShape();
-  vertex(240, 215);
-  bezierVertex(253, 205, 260, 223, 250, 225);
-  bezierVertex(260, 234, 250, 245, 239, 235);
-  bezierVertex(230, 247, 220, 230, 232, 226);
-  bezierVertex(220, 218, 230, 205, 240, 215);
-  endShape(CLOSE);
-
-}
-
-push();
-translate(20, 20);
-scale(0.5)
-drawFlower();
-pop();
-
-push();
-translate(40, 80);
-scale(0.5)
-drawFlower();
-pop();
-
-
-
 ////// DRAW LOG //////
 push();
   translate(0, 450);
@@ -167,8 +142,34 @@ drawLog();
 pop();
 
 
+//////////////// FLOWERS //////////////////
+function drawFlower(){
+
+  ellipse (240, 225, 10,10);
+    beginShape();
+    vertex(240, 215);
+    bezierVertex(253, 205, 260, 223, 250, 225);
+    bezierVertex(260, 234, 250, 245, 239, 235);
+    bezierVertex(230, 247, 220, 230, 232, 226);
+    bezierVertex(220, 218, 230, 205, 240, 215);
+    endShape(CLOSE);
+  
+  }
+  
+  push();
+  translate(20, 20);
+  scale(0.5)
+  drawFlower();
+  pop();
+  
+  push();
+  translate(40, 80);
+  scale(0.5)
+  drawFlower();
+  pop();
 
 
+////////////////////// GRASS (and flower location)/////////////////////
 function drawGrass() {
     noFill();
     stroke(0);
@@ -263,30 +264,7 @@ function drawGrass() {
   drawFlower();
   pop(); // left bottom grass
 
-  // set stroke weight and color
-  // push()
-  // strokeWeight(2);
-  // fill(255);
-  // ellipse(width, height, 80, 80);
-  // ellipse(width+40, height, 70, 70);
-  // ellipse(width-40, height-90, 60, 60);
-  // ellipse(220, 100, 50, 50);
-  // ellipse(260, 100, 70, 70);
-  // pop()
-
-  // draw a 7x4 grid of faces
-  // let w = canvasWidth / 7;
-  // let h = canvasHeight / 4;
-  // for(let i=0; i<4; i++) {
-  //   for(let j=0; j<7; j++) {
-  //     let y = h/2 + h*i;
-  //     let x = w/2 + w*j;
-     
-        // center face
-        // let eye_value = int(random(2,4));
-        // let tilt_value = random(-45, 45);
-        // let mouth_value = random(3,4);
-        // let is_cyclops = random(0, 100);
+  ////////////////////////// RANDOMISATION ///////////////////
 
         let facedetail_value = random(0.5, 7);
         let treerootscale = random (0.7, 1);
@@ -294,16 +272,7 @@ function drawGrass() {
         let lefteye_value = random (0, 3);
         let mouthh_value = random (0.5, 5);
 
-
-        
-
-
-        // if(is_cyclops < 10) {
-        //   eye_value = 1;
-        //   tilt_value = random(-5, 5);
-        //   mouth_value = random(0, 1.7);
-        // }
-
+      //centre log
         push();
         translate(width/2, height/2);
         scale(8);
@@ -311,7 +280,8 @@ function drawGrass() {
         strokeWeight(1);
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
         pop();
-
+        
+        // top right log
         push();
         translate(width/10*9.4, height/8*1.5);
         scale(10);
@@ -320,6 +290,7 @@ function drawGrass() {
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
         pop();
 
+        //most left log
         push();
         translate(width/8, height/2);
         scale(10);
@@ -328,6 +299,7 @@ function drawGrass() {
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(), getTreeRootscale());
         pop();
 
+        // second top right log
         push();
         translate(width/8*6, height/4);
         scale(9);
@@ -336,6 +308,7 @@ function drawGrass() {
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(),getTreeRootscale());
         pop();
 
+        // top left log
         push();
         translate(width/8*3, height/3);
         scale(9);
@@ -344,6 +317,7 @@ function drawGrass() {
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(),getTreeRootscale());
         pop();
       
+        // left log bottom
         push();
         translate(width/8*2, height/5*4);
         scale(9);
@@ -351,7 +325,7 @@ function drawGrass() {
         MYLOGFACE(getrandomFacedetail(), getrandomEyeRight(), getrandomEyeLeft(), getrandomMouthValue(),getTreeRootscale());
         pop();
 
-              
+        // right log bottom  
         push();
         translate(width/4*3, height/5*4);
         scale(9);
